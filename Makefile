@@ -1,6 +1,6 @@
 
 bin/myapp: obj/myapp.o obj/funcs.o | bin
-	gcc -o $@ $^
+	gcc -o $@ obj/myapp.o obj/funcs.o
 
 obj/myapp.o: src/myapp.c | obj
 	gcc -o $@ -c $< -I./include
@@ -8,11 +8,11 @@ obj/myapp.o: src/myapp.c | obj
 obj/funcs.o: src/funcs.c | obj
 	gcc -o $@ -c $< -I./include
 
-bin:
-	mkdir -p ./bin
-
 obj:
 	mkdir -p ./obj
+
+bin:
+	mkdir -p ./bin
 
 clean:
 	rm -f bin/myapp
